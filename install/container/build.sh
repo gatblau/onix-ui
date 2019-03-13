@@ -35,10 +35,6 @@ HASH=`git rev-parse --short HEAD`
 ONIXTAG="${VERSION}-${HASH}-${DATE}"
 echo "Onix TAG is: ${ONIXTAG}"
 
-# writes the version to the resources folder so it is available for the wapi to report on
-rm version
-echo ${ONIXTAG} >> version
-
 # deletes any images with no tag
 images_with_no_tag=$(docker images -f dangling=true -q)
 if [ -n "$images_with_no_tag" ]; then
