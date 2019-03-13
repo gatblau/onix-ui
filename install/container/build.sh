@@ -45,8 +45,17 @@ if [ -n "$images_with_no_tag" ]; then
     docker rmi $images_with_no_tag
 fi
 
+echo "deletes the app temp folder"
+rm -rf ./tmp
+
+echo "unzips the application jar file"
+mkdir -p ./tmp
+cp ../../*.json ./tmp
+cp ../../*.md ./tmp
+cp ../../*.js ./tmp
+
 echo "builds the docker image"
-docker build -t creoworks/onixui-snapshot:${TAG} .
+docker build -t creoworks/onixui-snapshot:${ONIXTAG} .
 
 echo "tags the image as latest"
-docker tag creoworks/onixui-snapshot:${TAG} creoworks/onixui-snapshot:latest
+docker tag creoworks/onixui-snapshot:${ONIXTAG} creoworks/onixui-snapshot:latest

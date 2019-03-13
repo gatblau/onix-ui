@@ -1,2 +1,4 @@
 .idea
 node_modules
+install/container/tmp
+install/container/version
